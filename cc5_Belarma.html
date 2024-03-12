@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coding Challenge 5</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: lightseagreen;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Modified FLAMES</h1>
+
+        <input type="text" id="name1" placeholder="Enter Name 1">
+        <input type="text" id="name2" placeholder="Enter Name 2">
+        <button onclick="calculateFlames()">Match Names</button>
+
+        <h4>FLAMES Result:</h4>
+        <h3 id="result"></h3>
+
+        <script>
+            function calculateFlames() {
+                var name1 = document.getElementById('name1').value.toLowerCase();
+                var name2 = document.getElementById('name2').value.toLowerCase();
+                var flames = "flames";
+                var flamesCount = 0;
+
+                for (var i = 0; i < name1.length; i++) {
+                    var char = name1.charAt(i);
+                    if (name2.includes(char)) {
+                        name2 = name2.replace(char, '');
+                        flamesCount++;
+                    }
+                }
+
+                var resultIndex = (flamesCount % flames.length) - 1;
+                if (resultIndex < 0) {
+                    resultIndex = flames.length - 1;
+                }
+
+                var result = flames.charAt(resultIndex);
+                document.getElementById('result').innerText = result;
+            }
+        </script>
+    </body>
+</html>
